@@ -1,0 +1,80 @@
+/* large view navigation ************************************/
+@media (min-width: 64.063em) {
+    body{
+        width: 100%;
+        background-image: url('../images/site/checkerboard.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat:repeat-x;
+    }
+
+    #wrapper{
+        width: 60%;
+        border: 10px solid #0c394b;
+        background-color: white;
+        padding: 2rem;
+        margin: 0 auto;
+    }
+
+    /* HEADER STYLING */
+    .siteName{
+        font-size: xxx-large;
+
+    }
+
+    /* INDEX PAGE */
+    .phrase{
+        left: 5rem;
+        top: 2rem;
+    }
+
+    .phrase p{
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-size: large;
+    }
+
+    .phrase h2{
+        font-size: x-large;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    #button-index{
+        padding: 0 1rem;
+    }
+
+    .hero-img{
+        width: 70%;
+    }
+
+    .hero{
+        text-align: center;
+    }
+
+    .index-order{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    #reviews{
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    #upgrades-section{
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    #reviews li{
+        padding: 1rem 0;
+        font-size: large;
+    }
+
+    #reviews ul{
+        padding-top: 1rem;
+    }
+}

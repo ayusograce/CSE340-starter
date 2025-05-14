@@ -1,0 +1,152 @@
+/******* Change Box Model ***************/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+
+:root{
+  --font: "Roboto", sans-serif;
+  --blackish: rgb(37, 43, 41);
+}
+
+body{
+  font-family: var(--font);
+}
+
+/* HEADER STYLING */
+
+#top-header{
+  text-align: center;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  padding-top: 0.3rem;
+}
+
+.siteName{
+  grid-column: 1;
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: left;
+  padding: 1rem;
+  display: flex;
+  align-items:last baseline ;
+}
+
+#tools{
+  grid-column: 2;
+  font-size: large;
+  justify-content: end;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+a{
+  text-decoration: none;
+  color: var(--blackish);
+}
+
+/* NAVIGATION OF THE PAGE */
+nav{
+  background-color: var(--blackish);
+  color: white;
+  max-width: 100%;
+  margin-top: 4px;
+    
+}
+
+nav ul{
+  justify-content: space-evenly;
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+nav li{
+  padding: 1rem;
+  font-size: large;
+}
+
+/* FOOTER OF THE PAGE */
+footer{
+  padding: 0.5rem 2rem;
+  font-weight: bolder;
+}
+
+
+/* INDEX PAGE */
+.hero{
+  position: relative;
+}
+
+.phrase{
+  position: absolute;
+  left: 1rem;
+  display: block;
+  padding: 1rem;
+  background-color: #e6e4e4bb;
+  color: #0c394b;
+}
+
+.phrase p{
+  margin: 0;
+  /* padding-left: 1rem; */
+  font-size: medium;
+}
+
+.phrase h2{
+  font-size: large;
+  /* padding-left: 1rem; */
+}
+
+.hero-img{
+  width: 100%;
+  height: auto;
+}
+
+#button-index{
+  margin-top: 1rem;
+  width: 150px;
+  height: auto;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  filter: contrast(150%);
+}
+
+h2{
+  font-size: x-large;
+}
+
+.upgrades{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  width:100%;
+  padding: 0 1rem 1rem 1rem;
+}
+
+figure{
+  padding: 1rem 0;
+  margin: 0;
+  text-align: center;
+}
+
+figcaption{
+  margin-top: 0.5rem;
+  color: blue;
+  text-decoration: underline;
+}
+
+.blue-bg{
+  background-color: #0c394b;
+  border: solid 1px var(--blackish);
+  display: block;
+  width: 160px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
