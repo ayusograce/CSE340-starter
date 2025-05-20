@@ -66,7 +66,12 @@ nav ul{
 
 nav li{
   padding: 1rem;
+  
+}
+
+nav li a{
   font-size: large;
+  color: white;
 }
 
 /* FOOTER OF THE PAGE */
