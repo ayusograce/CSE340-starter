@@ -155,3 +155,68 @@ figcaption{
   justify-content: center;
   align-items: center;
 }
+
+/* FORM OF THE ACCOUNT PAGE login.ejs */
+.login{
+  justify-content: center; 
+  display: grid;
+  align-items: center; 
+  text-align: center;     
+  padding: 3rem;
+  background-color: aliceblue;
+}
+
+.red-highlight{
+  color: brown;
+}
+
+form {
+    margin: 1rem 1rem;
+    justify-items:baseline;
+}
+  
+form label {
+    display: block;
+    font-size: 1rem;
+    padding-top: .2rem;
+}
+
+input[type=password],
+input[type=email], input[type=text] {
+    display: block;
+    margin: .1rem 0 1rem 0 ;
+    padding: .3rem;
+    border: 1px solid gray;
+    border-radius: 4px;
+    border-left-width: 5px;
+    border-left-color: red;
+    font-size: 1rem;
+    width: 250px;
+}
+
+input:required:valid{
+  border-left-color: green;
+}
+
+#submit-button{
+  width: 150px;
+  background-color: var(--blackish);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-family: var(--font);
+  font-weight: bold;
+  border-radius: 999px;
+  display: block;
+  margin: 0 auto;
+}
+
+#submit-button:hover{
+  background-color: #145f7d;
+}
+
+#password-rules{
+  font-size: small;
+  font-style: italic;
+  /* padding-bottom: 1rem; */
+  max-width: 250px;
+}

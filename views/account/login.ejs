@@ -1,0 +1,24 @@
+<!-- implement a value for the <title> element that 
+    describes the content of the view -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- to display messages in a view -->
+<%- messages() %>
+
+<!-- form to login -->
+<div class="login">
+    <form  action="get">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="account_email" required placeholder="youremail@mail.com">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="account_password" required>
+        <br>
+        <button id="submit-button" type="submit">LOGIN</button>
+    </form>
+    <p>No account? <a href="/account/register" class="red-highlight">Sign-up</a></p>
+</div>
