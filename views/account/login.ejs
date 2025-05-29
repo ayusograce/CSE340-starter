@@ -9,14 +9,22 @@
 <!-- to display messages in a view -->
 <%- messages() %>
 
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
 <!-- form to login -->
 <div class="login">
-    <form  action="get">
+    <form id="loginForm" action="/account/login" method="post">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="account_email" required placeholder="youremail@mail.com">
+        <input type="email" id="email" name="account_email" required placeholder="youremail@mail.com" value="<%= locals.account_email %>">
         <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="account_password" required>
+        <label for="accountPassword">Password:</label> 
+        <input type="password" name="account_password" id="accountPassword" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
         <br>
         <button id="submit-button" type="submit">LOGIN</button>
     </form>
