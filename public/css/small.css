@@ -62,11 +62,16 @@ nav ul{
   display: flex;
   list-style: none;
   padding-left: 0;
+  flex-wrap: wrap;
 }
 
 nav li{
   padding: 1rem;
-  
+}
+
+nav li:hover{
+  border-radius: 10%;
+  background-color: #0a3f53;
 }
 
 nav li a{
