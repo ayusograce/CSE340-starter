@@ -3,7 +3,7 @@
     body{
         /* width: 100%; */
         background-image: url('../images/site/small_check.jpg');
-        /* background-size: cover; */
+        background-size: cover;
         background-position: center;
         background-repeat:repeat;
     }
