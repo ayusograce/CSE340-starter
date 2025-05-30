@@ -225,3 +225,76 @@ input:required:valid{
   /* padding-bottom: 1rem; */
   max-width: 250px;
 }
+
+/* IMVENTORY PAGE */
+#inv-display{
+  list-style: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-left: 0;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+#inv-display li{
+  border: 1px solid gray;
+  margin-bottom: 1rem;
+  text-align: center;
+  /* align-items: end; */
+  width: 350px;
+  transition: transform 0.3s ease;
+}
+
+#inv-display li:hover{
+  transform: scale(1.03);
+}
+
+#inv-display li img{
+  margin-top: 1rem;
+}
+
+.namePrice{
+  padding-bottom: 1rem;
+  border-top: none;
+}
+
+/* DETAIL PAGE */
+#details-display{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#details-display img{
+  width: 100%;
+  max-width: 500px;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+#product-info{
+  text-align: left;
+  width: 100%;
+  max-width: 350px;
+}
+
+/* ERROR PAGE */
+.center-div{
+  text-align: center;
+  font-size: large;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+#crash{
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  padding-top: 2rem;
+}

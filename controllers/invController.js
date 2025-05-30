@@ -19,5 +19,24 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Build detail page by inventory Id
+ * ************************** */
+invCont.buildByInventoryId = async function (req, res, next) {
+  const inv_id = req.params.invId
+  const data = await invModel.getProductByInventoryId(inv_id)
+  const card = await utilities.buildProductCard(data)
+  let nav = await utilities.getNav()
+  const productYear = data.inv_year
+  const productMake = data.inv_make
+  const productModel = data.inv_model
+  res.render("./inventory/detail", {
+    title: productYear +" "+ productMake +" "+ productModel,
+    nav,
+    card,
+  })
+}
+
+
 
   module.exports = invCont

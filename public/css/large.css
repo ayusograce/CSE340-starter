@@ -1,11 +1,11 @@
 /* large view navigation ************************************/
 @media (min-width: 64.063em) {
     body{
-        width: 100%;
-        background-image: url('../images/site/checkerboard.jpg');
-        background-size: cover;
+        /* width: 100%; */
+        background-image: url('../images/site/small_check.jpg');
+        /* background-size: cover; */
         background-position: center;
-        background-repeat:repeat-x;
+        background-repeat:repeat;
     }
 
     #wrapper{

@@ -3,6 +3,15 @@ const utilities = require("../utilities")
 const accountModel = require("../models/account-model")
 
 
+//Function to produce an error 
+async function buildError(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/login", {
+    nav,
+    card,
+    })
+}
+
 /* ****************************************
 *  Deliver login view
 * *************************************** */
@@ -91,4 +100,4 @@ async function registerAccount(req, res) {
 // }
 
 
-module.exports = { buildLogin, buildRegister, registerAccount }
+module.exports = { buildLogin, buildRegister, registerAccount, buildError }
