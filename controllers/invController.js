@@ -38,5 +38,39 @@ invCont.buildByInventoryId = async function (req, res, next) {
 }
 
 
+/* ***************************
+ *  Build management page
+ * ************************** */
+invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/management", {
+    title: "Management",
+    nav,
+  })
+}
+
+/* ***************************
+ *  Build add classification page
+ * ************************** */
+invCont.buildAddClassification = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-classification", {
+    title: "Add new classification",
+    nav,
+    errors: null
+  })
+}
+
+/* ***************************
+ *  Build add vehicle page
+ * ************************** */
+invCont.buildAddVehicle = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-vehicle", {
+    title: "Add new Vehicle",
+    nav,
+    errors: null
+  })
+}
 
   module.exports = invCont

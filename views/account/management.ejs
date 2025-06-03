@@ -9,5 +9,12 @@
 <!-- to display messages in a view -->
 <%- messages() %>
 
-<!-- inventory items display -->
- <%- grid %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<p>You're logged in</p>
