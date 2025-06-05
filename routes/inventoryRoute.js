@@ -38,6 +38,13 @@ router.post(
 )
 
 // Get inventory by classification
-router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+router.get("/getInventory/:classification_id",  utilities.handleErrors(invController.getInventoryJSON))
+
+// Route to build the edit/update page
+router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEditInventory));
+
+// Route to process the updates in the edit page
+router.post("/update/", regValidate.newInventoryRules(), regValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
+
 
 module.exports = router;

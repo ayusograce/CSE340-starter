@@ -141,4 +141,111 @@ validate.checkInvData = async (req, res, next) => {
   next()
 }
 
+/* ******************************
+ * Check data and return errors or continue to update of inventory
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const { 
+    inv_id, inv_make, inv_model, inv_year, inv_description, inv_image,
+    inv_thumbnail, inv_price, inv_miles, inv_color, classification_id 
+  } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    let classificationList = await utilities.buildClassificationList(classification_id)
+    const itemName = `${inv_make} ${inv_model}`
+    res.render("inventory/edit-inventory", {
+      errors,
+      title: "Edit " + itemName,
+      nav,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification: classificationList
+    })
+    return
+  }
+  next()
+}
+
+/*  **********************************
+*  Registration Data Validation Rules for INVENTORY
+* ********************************* */
+validate.newInventoryRules = () => {
+return [
+    // make name 
+    body("inv_make")
+    .trim()
+    .escape()
+    .notEmpty()
+    .withMessage("Please provide a make."),
+
+    // model name 
+    body("inv_model")
+    .trim()
+    .escape()
+    .notEmpty()
+    .withMessage("Please provide a model."),
+
+    // year 
+    body("inv_year")
+    .trim()
+    .escape()
+    .isLength({ min:4, max:4 })
+    .isNumeric()
+    .withMessage("Please provide a valid year."),
+
+    // description
+    body("inv_description")
+    .trim()
+    .notEmpty()
+    .withMessage("Please provide a description."),
+
+    // image path 
+    body("inv_image")
+    .trim()
+    .escape()
+    .notEmpty()
+    .withMessage("Please provide an image path."),
+
+    // image thumbnail 
+    body("inv_thumbnail")
+    .trim()
+    .escape()
+    .notEmpty()
+    .withMessage("Please provide a thumbnail path."),
+
+    // price
+    body("inv_price")
+    .isFloat({min:0})
+    .withMessage("Please provide a positive number."),
+
+    // miles
+    body("inv_miles")
+    .isInt({min:0})
+    .withMessage("Please provide a positive number."),
+
+    // color
+    body("inv_color")
+    .trim()
+    .escape()
+    .notEmpty()
+    .withMessage("Please provide a color."),
+
+    // classification 
+    body("classification_id")
+    .isInt()
+    .withMessage("Please select a classification."),
+]
+}
+
+
 module.exports = validate
