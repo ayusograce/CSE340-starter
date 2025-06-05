@@ -1,0 +1,17 @@
+<!-- implement a value for the <title> element that 
+    describes the content of the view -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<div class="login">
+<form  action="/inv/add-classification" method="post">
+    <label for="newClassification">Classification Name:</label>
+    <input type="text" name="classification_name" id="newClassification" required pattern="^[a-zA-Z0-9]+$">
+    <p id="password-rules">Only letters and numbers. No spaces or special characters allowed.</p>
+    <br>
+    <button id="submit-button" type="submit">REGISTER CLASSIFICATION</button>
+</form>
+</div>

@@ -186,7 +186,7 @@ form label {
     padding-top: .2rem;
 }
 
-input[type=password],
+input[type=password], input[type=number], textarea, select,
 input[type=email], input[type=text] {
     display: block;
     margin: .1rem 0 1rem 0 ;
@@ -225,6 +225,21 @@ input:required:valid{
   /* padding-bottom: 1rem; */
   max-width: 250px;
 }
+
+.no-style{
+  list-style: none;
+}
+
+.no-style li{
+  padding-bottom: 0.5rem;
+  font-size: large;
+  font-weight: bold;
+}
+
+.no-style a:hover{
+  color: blue;
+}
+
 
 /* IMVENTORY PAGE */
 #inv-display{

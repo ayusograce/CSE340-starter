@@ -7,10 +7,20 @@
 } %>
 
 <!-- to display messages in a view -->
-<% messages() %>
+<%- messages() %>
 
 <!-- links -->
- <ul>
-    <li><a href="/inv/add-clasification">Add new classification</a></li>
-    <li><a href="/inv/add-vehicle">Add new vehicle</a></li>
- </ul>
+<div class="login">
+<ul class="no-style">
+  <li><a href="/inv/add-classification">Add new classification</a></li>
+  <li><a href="/inv/add-inventory">Add new vehicle</a></li>
+</ul>
+</div>
+<!-- <h2>
+  Manage Inventory
+</h2>
+<p>Please select a classification from the list to see the items belonging to the classification</p>
+- classificationList()
+<table id="inventoryDisplay"></table>
+<noscript>JavaScript must be enabled to use this page.</noscript>
+<script src="../../js/inventory.js"></script> -->
