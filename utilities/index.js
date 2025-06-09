@@ -144,6 +144,18 @@ Util.checkJWTToken = (req, res, next) => {
 }
 
 /* ****************************************
+* Middleware to restrict access to admin and employees
+**************************************** */
+Util.checkAccessToken = (req, res, next) => {
+  const accountData = res.locals.accountData
+  if (!accountData || (accountData.account_type !== "Employee" && accountData.account_type !== "Admin")) {
+    req.flash ("notice", "You don't have access to this area.")
+    return res.redirect("/account/login")
+ }
+ next()
+}
+
+/* ****************************************
  *  Check Login
  * ************************************ */
  Util.checkLogin = (req, res, next) => {

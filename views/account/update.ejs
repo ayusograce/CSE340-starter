@@ -1,0 +1,50 @@
+<!-- implement a value for the <title> element that 
+    describes the content of the view -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } %>
+
+<!-- to display messages in a view -->
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+
+<!-- form to update account -->
+<div class="login">
+    <h2>Update your information</h2>
+    <form  action="/account/update" method="post">
+        <label for="accountFirstname">First Name:</label>
+        <input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>">
+        <br>
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="account_lastname" required value="<%= locals.account_lastname %>">
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="account_email" required placeholder="youremail@mail.com" value="<%= locals.account_email %>">
+        <br>
+        <button id="update-button" type="submit">Update Account</button>
+        <input type="hidden" name="account_id"
+        <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+        <% } %>>
+    </form>
+</div>
+<div class="login">
+    <h2>Change your Password</h2>
+    <form action="/account/password" method="post">
+        <label for="accountPassword">Password:</label> 
+        <input type="password" name="account_password" id="accountPassword" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+        <p id="password-rules">Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</p> 
+        <br>
+        <button id="submit-button" type="submit">Change Password</button>
+        <input type="hidden" name="account_id"
+        <% if(locals.account_id) { %> value="<%=locals.account_id %>"
+        <% } %>>
+    </form>
+</div>

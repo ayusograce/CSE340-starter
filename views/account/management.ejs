@@ -18,3 +18,16 @@
 <% } %>
 
 <p>You're logged in</p>
+
+<% const accountType = accountData.account_type; %>
+<% const accountFirstName = accountData.account_firstname; %>
+<% const accountId = accountData.account_id; %>
+<div class="no-style">
+  <h2>Welcome <%= accountFirstName %></h2>
+  <p><a href="/account/update/<%= accountId %>">Update account information</a></p>
+
+  <% if (accountType === "Employee" || accountType === "Admin") { %>
+    <h3>Inventory Management</h3>
+    <p><a href="/inv/">Manage Inventory</a></p>
+  <% } %>
+</div>

@@ -51,6 +51,12 @@ app.use(cookieParser())
 app.use(utilities.checkJWTToken)
 
 
+// // Middleware for logeddin
+// app.use((req, res, next) => {
+//   res.locals.loggedin = req.session.loggedin || false
+//   next()
+// })
+
 /* ***********************
  * View Engine and Templates
  *************************/

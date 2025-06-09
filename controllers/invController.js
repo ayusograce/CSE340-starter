@@ -15,6 +15,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
   res.render("./inventory/classification", {
     title: className + " vehicles",
     nav,
+    loggedin: req.session.loggedin,
     grid,
   })
 }
@@ -33,6 +34,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
   res.render("./inventory/detail", {
     title: productYear +" "+ productMake +" "+ productModel,
     nav,
+    loggedin: req.session.loggedin,
     card,
   })
 }
@@ -47,6 +49,7 @@ invCont.buildManagement = async function (req, res, next) {
   res.render("./inventory/management", {
     title: "Vehicle Management",
     nav,
+    loggedin: req.session.loggedin,
     errors: null,
     classificationSelect,
   })
@@ -60,6 +63,7 @@ invCont.buildAddClassification = async function (req, res, next) {
   res.render("./inventory/add-classification", {
     title: "Add new classification",
     nav,
+    loggedin: req.session.loggedin,
     errors: null
   })
 }
@@ -80,12 +84,14 @@ invCont.addClassification = async function(req, res, next) {
     res.status(201).render("inventory/management", {
       title: "Management",
       nav,
+      loggedin: req.session.loggedin,
     })
   } else{
     req.flash("notice", "Sorry, the registration failed.")
     res.status(501).render("inventory/add-classification", {
       title: "Add classification",
       nav,
+      loggedin: req.session.loggedin,
     })
   }
 }
@@ -99,6 +105,7 @@ invCont.buildAddInventory = async function (req, res, next) {
   res.render("./inventory/add-inventory", {
     title: "Add new Inventory",
     nav,
+    loggedin: req.session.loggedin,
     errors: null,
     classification: classificationList
   })
@@ -122,12 +129,14 @@ invCont.addInventory = async function(req, res, next) {
     res.status(201).render("inventory/management", {
       title: "Management",
       nav,
+      loggedin: req.session.loggedin,
     })
   } else{
     req.flash("notice", "Sorry, the registration failed.")
     res.status(501).render("inventory/add-inventory", {
       title: "Add New Inventory",
       nav,
+      loggedin: req.session.loggedin,
       inv_make,
       inv_model,
       inv_year,
@@ -167,6 +176,7 @@ invCont.buildEditInventory = async function (req, res, next) {
   res.render("./inventory/edit-inventory", {
     title: "Edit " + itemName,
     nav,
+    loggedin: req.session.loggedin,
     classification: classificationSelect,
     errors: null,
     inv_id: itemData.inv_id,
@@ -226,6 +236,7 @@ invCont.updateInventory = async function (req, res, next) {
     res.status(501).render("inventory/edit-inventory", {
     title: "Edit " + itemName,
     nav,
+    loggedin: req.session.loggedin,
     classification: classificationSelect,
     errors: null,
     inv_id,
@@ -254,6 +265,7 @@ invCont.buildDeleteInventory = async function (req, res, next) {
   res.render("./inventory/delete-confirm", {
     title: "Delete " + itemName,
     nav,
+    loggedin: req.session.loggedin,
     errors: null,
     inv_id: itemData.inv_id,
     inv_make: itemData.inv_make,
@@ -281,6 +293,7 @@ invCont.deleteInventory = async function (req, res, next) {
     res.render("./inventory/delete-confirm", {
       title: "Delete " + itemName,
       nav,
+      loggedin: req.session.loggedin,
       errors: null,
       inv_id: itemData.inv_id,
       inv_make: itemData.inv_make,

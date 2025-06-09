@@ -203,7 +203,7 @@ input:required:valid{
   border-left-color: green;
 }
 
-#submit-button{
+#submit-button, #update-button{
   width: 150px;
   background-color: var(--blackish);
   color: white;
@@ -215,7 +215,7 @@ input:required:valid{
   margin: 0 auto;
 }
 
-#submit-button:hover{
+#submit-button:hover, #update-button:hover{
   background-color: #145f7d;
 }
 
@@ -230,7 +230,7 @@ input:required:valid{
   list-style: none;
 }
 
-.no-style li{
+.no-style li, .no-style p{
   padding-bottom: 0.5rem;
   font-size: large;
   font-weight: bold;
