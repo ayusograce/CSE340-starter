@@ -299,6 +299,23 @@ input:required:valid{
   max-width: 350px;
 }
 
+.comments{
+  list-style: none;
+  padding-right: 1rem;
+}
+
+.comments li{
+  padding: 0.5rem;
+  border: #a2acaf solid 1px;
+  margin-bottom: 10px;
+}
+
+#link{
+  text-decoration: underline;
+  font-weight: bold;
+  color: #145f7d;
+}
+
 /* ERROR PAGE */
 .center-div{
   text-align: center;

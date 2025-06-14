@@ -1,6 +1,51 @@
 const utilities = require("./index")
 const { body, validationResult } = require("express-validator")
 const validate = {}
+const invModel = require("../models/inventory-model")
+const commentModel = require("../models/comment-model")
+
+/*  **********************************
+*  New comments Validation Rules
+* ********************************* */
+validate.commentRules = () => {
+return [
+    // name is required and cannot contain a space or special character of any kind
+    body("comment_text")
+    .trim()
+    .notEmpty()
+    .withMessage("You have to write a comment."),
+]
+}
+
+/* ******************************
+ * Check data and return errors or continue add new comment
+ * ***************************** */
+validate.checkcommentData = async (req, res, next) => {
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+      const inv_id = req.body.inv_id
+      const data = await invModel.getProductByInventoryId(inv_id)
+      const card = await utilities.buildProductCard(data)
+      let nav = await utilities.getNav()
+      const comments = await commentModel.getComments(inv_id) // To show comments in the page
+      const productYear = data.inv_year
+      const productMake = data.inv_make
+      const productModel = data.inv_model
+      res.render("./inventory/detail", {
+        title: productYear +" "+ productMake +" "+ productModel,
+        nav,
+        loggedin: req.session.loggedin,
+        card,
+        comments,
+        data,
+        errors,
+    })
+    return
+  }
+  next()
+}
+
 
 /*  **********************************
 *  Registration Data Validation Rules

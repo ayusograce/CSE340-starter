@@ -47,6 +47,15 @@ CREATE TABLE IF NOT EXISTS public.account
     CONSTRAINT account_pkey PRIMARY KEY (account_id)
 );
 
+--Table structure for table `comments`
+CREATE TABLE IF NOT EXISTS public.comments (
+  comment_id SERIAL PRIMARY KEY,
+  comment_text TEXT NOT NULL,
+  comment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  inv_id INT REFERENCES inventory(inv_id),
+  account_id INT REFERENCES account(account_id)
+);
+
 
 --Data for table classification
 INSERT INTO public.classification(classification_name)

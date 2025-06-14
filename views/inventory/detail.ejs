@@ -7,7 +7,41 @@
 } %>
 
 <!-- to display messages in a view -->
-<% messages() %>
+<%- messages() %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
 
 <!-- product details display -->
  <%- card %>
+
+<!-- To show the comments -->
+<h2>Comments</h2>
+<ul class="comments">
+  <% if (comments && comments.length) {%>
+    <% comments.forEach(comment => { %>
+      <li>
+        <strong><%= comment.author %></strong>:
+        <%= comment.comment_text %>
+        (<%= comment.comment_date.toLocaleDateString() %>)
+      </li>
+    <% }); %>
+    <% } else { %>
+        <li>No comments yet</li>
+  <% } %>
+</ul>
+
+<h3>Add New Comment</h3>
+<% if (loggedin) { %>
+<form class="login" action="/inv/add-comment" method="post">
+    <textarea name="comment_text" required></textarea>
+    <input type="hidden" name="inv_id" value="<%= data.inv_id %>">
+    <button type="submit" id="submit-button">Post Comment</button>
+</form>
+<% } else { %>
+  <p>You must <a id="link" href="/account/login">log in</a> to post a comment.</p>
+<% } %>

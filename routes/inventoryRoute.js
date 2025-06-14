@@ -54,5 +54,7 @@ router.get("/delete/:inv_id", utilities.checkAccessToken, utilities.handleErrors
 // Route to process the delete
 router.post("/delete/", utilities.checkAccessToken, utilities.handleErrors(invController.deleteInventory));
 
+// Route to add new comment
+router.post("/add-comment", regValidate.commentRules(), regValidate.checkcommentData, utilities.handleErrors(invCont.newComment));
 
 module.exports = router;

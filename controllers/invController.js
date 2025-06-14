@@ -1,7 +1,57 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
+const commentModel = require("../models/comment-model")
 
 const invCont = {}
+
+/* ***************************
+ *  Build detail page by inventory Id WITH COMMENTS
+ * ************************** */
+invCont.buildByInventoryId = async function (req, res, next) {
+  const inv_id = req.params.invId
+  const data = await invModel.getProductByInventoryId(inv_id)
+  const card = await utilities.buildProductCard(data)
+  let nav = await utilities.getNav()
+
+  // To show comments in the page
+  const comments = await commentModel.getComments(inv_id)
+
+  const productYear = data.inv_year
+  const productMake = data.inv_make
+  const productModel = data.inv_model
+  res.render("./inventory/detail", {
+    title: productYear +" "+ productMake +" "+ productModel,
+    nav,
+    loggedin: req.session.loggedin,
+    card,
+    comments,
+    data,
+    errors:null
+  })
+}
+
+/* ***************************
+ *  Add new comment in the page
+ * ************************** */
+invCont.newComment = async function (req, res, next) {
+  const {comment_text, inv_id } = req.body
+  // console.log("session data:", req.session);
+  const account_id = req.session.account.account_id;
+  if (!account_id){
+    req.flash("notice", "You must be logged in to comment.");
+    return res.redirect(`/inv/detail/${inv_id}`)
+  }
+  try {
+    await commentModel.registerComment(comment_text, inv_id, account_id)
+    res.redirect(`/inv/detail/${inv_id}`)
+  } catch (err) {
+    console.error(err)
+    req.flash("notice", "Failed to add new comment.")
+    res.redirect(`/inv/detail/${inv_id}`)
+  }
+}
+
+
 
 /* ***************************
  *  Build inventory by classification view
@@ -17,25 +67,6 @@ invCont.buildByClassificationId = async function (req, res, next) {
     nav,
     loggedin: req.session.loggedin,
     grid,
-  })
-}
-
-/* ***************************
- *  Build detail page by inventory Id
- * ************************** */
-invCont.buildByInventoryId = async function (req, res, next) {
-  const inv_id = req.params.invId
-  const data = await invModel.getProductByInventoryId(inv_id)
-  const card = await utilities.buildProductCard(data)
-  let nav = await utilities.getNav()
-  const productYear = data.inv_year
-  const productMake = data.inv_make
-  const productModel = data.inv_model
-  res.render("./inventory/detail", {
-    title: productYear +" "+ productMake +" "+ productModel,
-    nav,
-    loggedin: req.session.loggedin,
-    card,
   })
 }
 
